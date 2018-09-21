@@ -2,7 +2,7 @@
 
 ## 配置邮箱
 
-php/config/mail.json
+config/mail.json
 
 ```json
 {
@@ -18,7 +18,6 @@ php/config/mail.json
 ## 执行脚本
 
 ```sh
-cd php
 sh build.sh
 ```
 
