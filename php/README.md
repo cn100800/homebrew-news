@@ -25,4 +25,4 @@ sh build.sh
 
 # 听说你想请我喝下午茶？😏
 
-![Wechat](Wechat.jpeg)
+![Wechat](Wechat.jpeg){:height="50%" width="50%"}
