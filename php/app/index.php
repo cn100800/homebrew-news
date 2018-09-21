@@ -6,6 +6,7 @@ use app\client\client;
 use app\mail\mail;
 
 require __DIR__ . '/../vendor/autoload.php';
+if (!is_dir(__DIR__ . '/../log/')) mkdir(__DIR__ . '/../log/');
 $log_path = __DIR__ . '/../log/' . date('Y-m-d_H') . '.log';
 $client = new client();
 $params = config('home.home.params');
