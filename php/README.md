@@ -2,8 +2,9 @@
 
 ## 配置邮箱
 
+php/config/mail.json
+
 ```json
-//php/config/mail.json
 {
     "host" : "name.example.com",
     "port" : "80",
