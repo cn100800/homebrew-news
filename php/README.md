@@ -23,6 +23,7 @@ sh build.sh
 
 ## 查收邮件
 
-# 听说你想请我喝下午茶？😏
+### 听说你想请我喝下午茶？😏
 
-![Wechat](Wechat.jpeg){:height="50%" width="50%"}
+<!--![Wechat](Wechat.jpeg)-->
+<div><img width="250" height="250" src="Wechat.jpeg"/></div>
