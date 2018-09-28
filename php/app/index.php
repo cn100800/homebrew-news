@@ -5,6 +5,8 @@ namespace app;
 use app\client\client;
 use app\mail\mail;
 
+$start_time = microtime(true);
+
 init();
 
 $body = "<html><head><title></title></head><body>";
@@ -18,7 +20,7 @@ while ($have_more) {
         }
         if (!empty($value['NewsTips'])) {
             $value['NewsTips'][0]['TipName'] = '广告';
-            error_log(json_encode($value, JSON_UNESCAPED_UNICODE), 3, $log_path);
+            error_log(json_encode($value, JSON_UNESCAPED_UNICODE) . "\n", 3, $log_path);
             continue;
         }
         $body .= "<h1><a href='${value['WapNewsUrl']}'>${value['title']}</a></h1><h2>${value['description']}</h2><br />";
@@ -35,7 +37,7 @@ function init(){
     if (!is_dir(__DIR__ . '/../log/')) {
         mkdir(__DIR__ . '/../log/');
     }
-    $log_path = __DIR__ . '/../log/' . date('Y-m-d_H') . '.log';
+    $log_path = __DIR__ . '/../log/' . date('Y-m-d') . '.log';
     date_default_timezone_set('Asia/Shanghai');
 }
 
@@ -69,3 +71,4 @@ $body .= "</body></html>";
 $mail = new mail();
 $mail->mail(date('Y-m-d'), $body);
 
+$end_time = microtime(true);
