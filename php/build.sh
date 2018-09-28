@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-$(which php) app/index.php
+$(which php) php/app/index.php

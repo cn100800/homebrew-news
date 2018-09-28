@@ -26,9 +26,9 @@ while ($have_more) {
         $have_more = true;
     }
 }
-$body .= "</body></html>";
-$mail = new mail();
-$mail->mail(date('Y-m-d'), $body);
+// $body .= "</body></html>";
+// $mail = new mail();
+// $mail->mail(date('Y-m-d'), $body);
 
 function init(){
     global $log_path;
@@ -48,8 +48,8 @@ function getData($time){
     $client = new client();
     return $client->get(config('home.home.uri'), config('home.home.path'), $params);
 }
-
-$body = "<html><head><title></title></head><body>";
+$body .="<hr />";
+//$body = "<html><head><title></title></head><body>";
 $have_more = true;
 $params = config('home.jue.params');
 while ($have_more) {
