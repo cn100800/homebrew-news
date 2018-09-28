@@ -1,13 +1,15 @@
 <?php
 
 namespace app\mail;
+
 use Swift_SmtpTransport;
 use Swift_Mailer;
 use Swift_Message;
 
-class mail {
-
-    public function mail($theme, $message, $from = '', $to = ''){
+class mail
+{
+    public function mail($theme, $message, $from = '', $to = '')
+    {
         $mail_config = json_decode(file_get_contents(__DIR__.'/../../config/mail.json'), true);
         $transport = (new Swift_SmtpTransport($mail_config['host'], $mail_config['port']))
             ->setUsername($mail_config['username'])

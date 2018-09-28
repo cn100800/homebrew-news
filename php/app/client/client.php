@@ -2,9 +2,10 @@
 
 namespace app\client;
 
-class client {
-
-    public function post($uri, $params) {
+class client
+{
+    public function post($uri, $params)
+    {
         $uri = base64_decode($uri);
         $client = curl_init();
         curl_setopt($client, CURLOPT_URL, $uri);
@@ -17,7 +18,8 @@ class client {
         return $data;
     }
 
-    public function get($uri, $path, $params){
+    public function get($uri, $path, $params)
+    {
         $uri = base64_decode($uri);
         $client = curl_init();
         $uri = $uri . $path . '?' . http_build_query($params);
