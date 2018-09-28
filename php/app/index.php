@@ -48,3 +48,22 @@ function getData($time){
     $client = new client();
     return $client->get(config('home.home.uri'), config('home.home.path'), $params);
 }
+
+$body = "<html><head><title></title></head><body>";
+$have_more = true;
+$params = config('home.jue.params');
+while ($have_more) {
+    $have_more = false;
+    $client = new client();
+    $data = $client->get(config('home.jue.uri'), config('home.jue.path'), $params);
+    foreach ($data['d']['list'] as $value) {
+        if (date('Y-m-d', strtotime($value['createdAt'])) != date('Y-m-d')) continue;
+        $body.="<h2>${value['content']}</h2><br />";
+        $have_more = true;
+        $params['before'] = $value['createdAt'];
+    }
+}
+$body .= "</body></html>";
+$mail = new mail();
+$mail->mail(date('Y-m-d'), $body);
+
