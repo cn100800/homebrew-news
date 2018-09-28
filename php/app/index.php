@@ -21,14 +21,11 @@ while ($have_more) {
             error_log(json_encode($value, JSON_UNESCAPED_UNICODE), 3, $log_path);
             continue;
         }
-        $body .= "<h1>${value['title']}</h1><h2>${value['description']}</h2><a href='${value['WapNewsUrl']}'>wap</a><br />";
+        $body .= "<h1><a href='${value['WapNewsUrl']}'>${value['title']}</a></h1><h2>${value['description']}</h2><br />";
         $up_time = strtotime($value['orderdate']).'000';
         $have_more = true;
     }
 }
-// $body .= "</body></html>";
-// $mail = new mail();
-// $mail->mail(date('Y-m-d'), $body);
 
 function init(){
     global $log_path;
@@ -49,7 +46,6 @@ function getData($time){
     return $client->get(config('home.home.uri'), config('home.home.path'), $params);
 }
 $body .="<hr />";
-//$body = "<html><head><title></title></head><body>";
 $have_more = true;
 $params = config('home.jue.params');
 while ($have_more) {
@@ -58,7 +54,7 @@ while ($have_more) {
     $data = $client->get(config('home.jue.uri'), config('home.jue.path'), $params);
     foreach ($data['d']['list'] as $value) {
         if (date('Y-m-d', strtotime($value['createdAt'])) != date('Y-m-d')) continue;
-        $body.="<h2>${value['content']}</h2>";
+        $body .="<h2><a href='". base64_decode(config('home.jue.wap')) . $value['objectId'] . "'>${value['content']}<a/><br /></h2>";
         if (!empty($value['pictures'])){
             foreach ($value['pictures'] as $img_url) {
                 $body.="<img src='${img_url}' width='600' height='auto'/>";

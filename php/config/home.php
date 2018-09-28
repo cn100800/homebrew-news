@@ -24,5 +24,6 @@ return [
             'before' => '',
             'limit' => 30,
         ],
+        'wap' => 'aHR0cHM6Ly9qdWVqaW4uaW0vcGluLw==',
     ],
 ];
