@@ -11,7 +11,9 @@ config/mail.json
     "username" : "example@example.com",
     "password" : "example@example.com",
     "send_from" : "example@example.com",
-    "send_to" : "example@example.com"
+    "send_to" : [
+        "example@example.com"
+    ]
 }
 ```
 
