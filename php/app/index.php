@@ -21,7 +21,7 @@ while ($have_more) {
             error_log(json_encode($value, JSON_UNESCAPED_UNICODE), 3, $log_path);
             continue;
         }
-        $body .= "<h1>${value['title']}</h1><h2>${value['description']}</h2><br />";
+        $body .= "<h1>${value['title']}</h1><h2>${value['description']}</h2><a href='${value['WapNewsUrl']}'>wap</a><br />";
         $up_time = strtotime($value['orderdate']).'000';
         $have_more = true;
     }
@@ -58,7 +58,13 @@ while ($have_more) {
     $data = $client->get(config('home.jue.uri'), config('home.jue.path'), $params);
     foreach ($data['d']['list'] as $value) {
         if (date('Y-m-d', strtotime($value['createdAt'])) != date('Y-m-d')) continue;
-        $body.="<h2>${value['content']}</h2><br />";
+        $body.="<h2>${value['content']}</h2>";
+        if (!empty($value['pictures'])){
+            foreach ($value['pictures'] as $img_url) {
+                $body.="<img src='${img_url}'/>";
+            }
+        }
+        $body.="<br />";
         $have_more = true;
         $params['before'] = $value['createdAt'];
     }
