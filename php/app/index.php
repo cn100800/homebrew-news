@@ -32,4 +32,4 @@ while ($have_more) {
 }
 $body .= "</body></html>";
 $mail = new mail();
-$mail->mail('home', $body);
+$mail->mail(date('Y-m-d'), $body);
