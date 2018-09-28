@@ -61,7 +61,7 @@ while ($have_more) {
         $body.="<h2>${value['content']}</h2>";
         if (!empty($value['pictures'])){
             foreach ($value['pictures'] as $img_url) {
-                $body.="<img src='${img_url}'/>";
+                $body.="<img src='${img_url}' width='600' height='auto'/>";
             }
         }
         $body.="<br />";
