@@ -11,6 +11,15 @@ return [
             'ot' => '',
             'page' => 0,
         ],
+        'format' => <<<home
+<h1>
+    <a href='%s'>%s</a>
+</h1>
+<h2>
+    %s
+</h2>
+<br />
+home
     ],
     'jue' => [
         'uri' => 'aHR0cHM6Ly9zaG9ydC1tc2ctbXMuanVlamluLmltLw==',

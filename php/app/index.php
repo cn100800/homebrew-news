@@ -23,7 +23,7 @@ while ($have_more) {
             error_log(json_encode($value, JSON_UNESCAPED_UNICODE) . "\n", 3, $log_path);
             continue;
         }
-        $body .= "<h1><a href='${value['WapNewsUrl']}'>${value['title']}</a></h1><h2>${value['description']}</h2><br />";
+        $body .= sprintf(config('home.home.format'), config('base.show_click') ? $value['WapNewsUrl'] : '' , $value['title'], $value['description']);
         $up_time = strtotime($value['orderdate']).'000';
         $have_more = true;
     }
