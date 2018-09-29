@@ -4,12 +4,21 @@ namespace app;
 
 use app\client\client;
 use app\mail\mail;
+use app\weather\weather;
 
 $start_time = microtime(true);
 
 init();
 
 $body = "<html><head><title></title></head><body>";
+
+$weather_data = weather::getWeather();
+$weather_data = $weather_data['data']['forecast_24h'];
+foreach ($weather_data as $key => $value) {
+    if ($key == 0) continue;
+    $body .= sprintf(config('home.weather.format'), weather::$week[date('w', strtotime($value['time']))], $value['time'], $value['day_weather'], $value['day_wind_direction']);
+}
+
 $up_time = time().'000';
 while ($have_more) {
     $have_more = false;
