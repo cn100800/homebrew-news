@@ -1,6 +1,7 @@
 {
     "host" : "name.example.com",
     "port" : "80",
+    "name" : "name",
     "username" : "example@example.com",
     "password" : "example@example.com",
     "send_from" : "example@example.com",

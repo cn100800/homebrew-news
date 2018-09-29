@@ -21,7 +21,7 @@ class mail
 
         // Create a message
         $message = (new Swift_Message($theme))
-            ->setFrom([$mail_config['send_from'] => 'cn'])
+            ->setFrom([$mail_config['send_from'] => $mail_config['name']])
             ->setTo($mail_config['send_to'])
             ->setBody($message, 'text/html', 'utf-8')
         ;
